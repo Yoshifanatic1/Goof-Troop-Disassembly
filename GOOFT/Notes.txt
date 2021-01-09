@@ -1,0 +1,14 @@
+- This game only took me 4 days to disassemble. Which I'm glad, because one other game I disassembled took way longer than it should of.
+
+- There is a reference to bank $908000 in one place despite being a 512 KB game, which suggests the game was either origionally larger or it was for some sort of debugging routine.
+
+- Most of the sprite graphics are decompressed to $7E2000 so they can be used any any time. However, there are two exceptions that are stored uncompressed in the ROM, presumably due to lack of RAM.
+
+- There are some unused graphics in the decompressed sprite graphics. Unless I somehow never entered the room where they're found (despite playing this game many times), these graphics include:
+	- A seashell
+	- A sign post
+	- A log
+	- A spring/metal barrel
+	- A rock
+	- An ice block
+All of the above are stored where grabbable items and kickable blocks are stored. There may be more unused graphics, but these are the ones I noticed.
