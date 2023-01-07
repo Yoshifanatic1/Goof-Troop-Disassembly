@@ -1,6 +1,6 @@
 @echo off
 
-set PATH="../Global"
+set PATH="..\Global"
 set Input1=
 set asarVer=asar
 set GAMDID="GOOFT"
@@ -38,26 +38,26 @@ goto :Assemble
 
 :USA
 set ROMNAME=Goof Troop
-set ROMVer=(U)
+set ROMVer=(USA)
 goto :Assemble
 
 :PAL
 set ROMNAME=Goof Troop
-set ROMVer=(E)
+set ROMVer=(Europe)
 goto :Assemble
 
 :Japan
-set ROMVer=(J)
+set ROMVer=(Japan)
 set ROMNAME=Goofy to Max - Kaizoku-jima no Daibouken
 
 :French
 set ROMNAME=Goof Troop
-set ROMVer=(F)
+set ROMVer=(French)
 goto :Assemble
 
 :German
 set ROMNAME=Goof Troop
-set ROMVer=(G)
+set ROMVer=(German)
 
 :Assemble
 
@@ -69,8 +69,8 @@ echo.
 
 %asarVer% --fix-checksum=on --define GameID="%GAMDID%" --define ROMID="%Input1%" --define FileType=0 ..\Global\AssembleFile.asm %output%
 
-echo Assembling %ROMNAME% SPC700 engine...
-%asarVer% --no-title-check --define GameID="%GAMDID%" --define ROMID="%Input1%" --define FileType=4 --define PathToFile="SPC700/Engine.asm" ..\Global\AssembleFile.asm SPC700\Engine.bin
+echo Assembling %ROMNAME% SPC700 Blocks...
+%asarVer% --no-title-check --define GameID="%GAMDID%" --define ROMID="%Input1%" --define FileType=4 ..\Global\AssembleFile.asm SPC700\SPC700DataBlocks_%GAMDID%.bin
 
 echo Assembling ROM...
 %asarVer% --define GameID="%GAMDID%" --define ROMID="%Input1%" --define FileType=1 ..\Global\AssembleFile.asm %output%
@@ -94,10 +94,10 @@ if exist ..\%GAMDID%\Temp.txt del ..\%GAMDID%\Temp.txt
 %asarVer% --fix-checksum=off --define GameID="%GAMDID%" --define ROMID="%Input1%" --define FileType=3 ..\Global\AssembleFile.asm %output%
 
 echo Cleaning up...
-if exist ..\%GAMDID%\SPC700\Engine.bin del ..\%GAMDID%\SPC700\Engine.bin
+if exist ..\%GAMDID%\SPC700\SPC700DataBlocks_%GAMDID%.bin del ..\%GAMDID%\SPC700\SPC700DataBlocks_%GAMDID%.bin
 
 echo.
-echo Done!
+echo Done^^!
 echo.
 echo Press Enter to re-assemble the chosen ROM.
 goto :Input
